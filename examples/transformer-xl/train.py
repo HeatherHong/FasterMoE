@@ -439,6 +439,7 @@ def train():
             data_chunks = torch.chunk(data, args.batch_chunk, 1)
             target_chunks = torch.chunk(target, args.batch_chunk, 1)
             for i in range(args.batch_chunk):
+                print("Iteration : ", i, "Local device : ", local_device)
                 data_i = data_chunks[i].contiguous()
                 target_i = target_chunks[i].contiguous()
                 ret = para_model(data_i, target_i, *mems[i])
